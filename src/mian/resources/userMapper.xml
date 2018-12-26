@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="jcm.mapper.UserMapper">
+    <!-- 增加 -->
+    <insert id="add" parameterType="jcm.bo.User" useGeneratedKeys="true">
+        insert into t_user (username,phone) values (
+        #{username,jdbcType=VARCHAR},
+        #{phone,jdbcType=INTEGER})
+    </insert>
+    <!-- 删除 -->
+    <delete id="delete" parameterType="jcm.bo.User">
+        delete from t_user where id = #{id ,jdbcType=INTEGER}
+    </delete>
+    
+    <select id="listUser" resultType="jcm.bo.User">
+    	select * from t_user
+    </select>
+</mapper>
